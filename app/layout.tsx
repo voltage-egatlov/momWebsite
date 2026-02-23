@@ -19,8 +19,8 @@ const dmSans = DM_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: "Studio — Architecture",
-    template: "%s | Studio",
+    default: "Upasna Chhabra — Architecture",
+    template: "%s | Upasna Chhabra",
   },
   description: "Architecture studio.",
 };

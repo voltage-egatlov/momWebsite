@@ -1,8 +1,13 @@
 ---
 title: North
-category: Interior Design
+category: Architecture
 year: 2023
 location: Lexington, Massachusetts
 description: A contemporary family home that frames views of the garden through a sequence of carefully composed apertures.
-longDescription: Located on a quiet residential street in the southern districts of Antwerp, Villa Antwerp explores the relationship between inside and outside living. The ground floor dissolves the boundary between kitchen, dining, and garden through full-height glazing. The upper level, clad in untreated larch, recedes above the garden wall to maintain neighbourly proportions while capturing long views across the treetops to the south.
+longDescription: |
+  Originally built in the 1960s, this ranch-style home was reimagined through a complete gut renovation and thoughtfully integrated additions, transforming it into a refined and contemporary living environment.
+
+  The redesign expanded the footprint to include a private primary suite, a two-car garage, and an upper-level office retreat with an adjoining deck—creating a seamless balance between functionality and comfort. At the heart of the transformation was the decision to open the ceiling plane, introducing volume and architectural drama to the main living areas. The newly established open plan enhances flow and connectivity, while expansive windows and strategically placed skylights invite daylight to filter deep into the interior, animating the space throughout the day.
+
+  Newly designed bathrooms, a fully finished basement, and carefully curated front and rear landscaping complete the composition. The result is a once modest ranch home, now elevated into a luminous, modern residence that harmonizes spatial openness, natural light, and contemporary living.
 ---

@@ -49,12 +49,12 @@ export function getAllProjects(): Project[] {
 
             return {
                 slug,
-                title: data.title ?? "",
-                category: data.category ?? "",
-                year: data.year ?? 0,
-                location: data.location ?? "",
-                description: data.description ?? "",
-                longDescription: data.longDescription ?? "",
+                title: String(data.title ?? ""),
+                category: String(data.category ?? ""),
+                year: Number(data.year ?? 0),
+                location: String(data.location ?? ""),
+                description: String(data.description ?? ""),
+                longDescription: String(data.longDescription ?? ""),
                 mainImage: `/projects/${slug}/main.JPG`,
                 gallery: {
                     before: readImages(

@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import SidebarShell from "@/components/Sidebar";
+import ProjectGallery from "@/components/ProjectGallery";
 import type { Project } from "@/lib/projects";
 
 export default function ProjectDetail({ project }: { project: Project }) {
@@ -61,26 +62,12 @@ export default function ProjectDetail({ project }: { project: Project }) {
         </div>
       </div>
 
-      {/* Gallery — CSS columns for natural packing */}
-      {project.gallery.length > 0 && (
-        <div className="p-4 pt-3" style={{ columns: "2", gap: "0.75rem" }}>
-          {project.gallery.map((src, i) => (
-            <div
-              key={src}
-              className="overflow-hidden bg-stone-100 mb-3 break-inside-avoid"
-            >
-              <Image
-                src={src}
-                alt={`${project.title} — ${i + 1}`}
-                width={1200}
-                height={800}
-                className="w-full h-auto block"
-                sizes="50vw"
-              />
-            </div>
-          ))}
-        </div>
-      )}
+      {/* Gallery carousel */}
+      <ProjectGallery
+        before={project.gallery.before}
+        after={project.gallery.after}
+        projectTitle={project.title}
+      />
     </SidebarShell>
   );
 }

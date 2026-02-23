@@ -11,7 +11,19 @@ export interface Project {
     description: string;
     longDescription: string;
     mainImage: string;
-    gallery: string[];
+    gallery: {
+        before: string[];
+        after: string[];
+    };
+}
+
+function readImages(dir: string, urlBase: string): string[] {
+    if (!fs.existsSync(dir)) return [];
+    return fs
+        .readdirSync(dir)
+        .filter((f) => /\.(jpe?g|png|webp|avif)$/i.test(f))
+        .sort()
+        .map((f) => `${urlBase}/${f}`);
 }
 
 export function getAllProjects(): Project[] {
@@ -32,14 +44,8 @@ export function getAllProjects(): Project[] {
             const raw = fs.readFileSync(infoPath, "utf-8");
             const { data } = matter(raw);
 
-            const galleryDir = path.join(projectsDir, slug, "gallery");
-            const gallery: string[] = fs.existsSync(galleryDir)
-                ? fs
-                      .readdirSync(galleryDir)
-                      .filter((f) => /\.(jpe?g|png|webp|avif)$/i.test(f))
-                      .sort()
-                      .map((f) => `/projects/${slug}/gallery/${f}`)
-                : [];
+            const galleryBase = path.join(projectsDir, slug, "gallery");
+            const urlBase = `/projects/${slug}/gallery`;
 
             return {
                 slug,
@@ -50,7 +56,10 @@ export function getAllProjects(): Project[] {
                 description: data.description ?? "",
                 longDescription: data.longDescription ?? "",
                 mainImage: `/projects/${slug}/main.JPG`,
-                gallery,
+                gallery: {
+                    before: readImages(path.join(galleryBase, "before"), `${urlBase}/before`),
+                    after: readImages(path.join(galleryBase, "after"), `${urlBase}/after`),
+                },
             } satisfies Project;
         })
         .filter((p): p is Project => p !== null)

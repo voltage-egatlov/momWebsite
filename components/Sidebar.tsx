@@ -20,7 +20,21 @@ export default function SidebarShell({ children }: { children: React.ReactNode }
   }
 
   return (
-    <div className="flex h-screen overflow-hidden">
+    <>
+      {/* Mobile — work in progress */}
+      <div className="flex md:hidden min-h-screen items-center justify-center px-8 bg-[var(--color-background)]">
+        <div className="text-center">
+          <p className="heading-serif text-4xl font-medium mb-4">
+            Upasna Chhabra
+          </p>
+          <p className="text-xs tracking-widest uppercase text-[var(--color-muted)]">
+            Mobile site coming soon
+          </p>
+        </div>
+      </div>
+
+      {/* Desktop */}
+      <div className="hidden md:flex h-screen overflow-hidden">
       <aside className="w-48 shrink-0 flex flex-col py-10 px-7 border-r border-stone-200">
         <Link
           href="/work"
@@ -46,9 +60,27 @@ export default function SidebarShell({ children }: { children: React.ReactNode }
             ))}
           </ul>
         </nav>
+
+        <div className="mt-auto space-y-1">
+          <p className="text-[10px] text-[var(--color-muted)] leading-snug">
+            &copy; {new Date().getFullYear()} Upasna Chhabra
+          </p>
+          <p className="text-[10px] text-[var(--color-muted)] leading-snug">
+            Design by{" "}
+            <a
+              href="https://tejchhabra.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:opacity-60 transition-opacity duration-200"
+            >
+              Tej Chhabra
+            </a>
+          </p>
+        </div>
       </aside>
 
       <main className="flex-1 overflow-y-auto">{children}</main>
-    </div>
+      </div>
+    </>
   );
 }

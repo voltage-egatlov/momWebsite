@@ -11,7 +11,7 @@ export default function ProjectDetail({ project }: { project: Project }) {
       {/* Main image + info — stacked on mobile, side-by-side on desktop */}
       <div className="flex flex-col md:flex-row md:h-screen">
         {/* Main image */}
-        <div className="relative w-full aspect-[4/3] md:aspect-auto md:w-3/5 md:shrink-0 bg-stone-100">
+        <div className="relative w-full aspect-[4/3] md:aspect-auto md:w-2/5 md:shrink-0 bg-stone-100">
           <Image
             src={project.mainImage}
             alt={project.title}
@@ -22,16 +22,20 @@ export default function ProjectDetail({ project }: { project: Project }) {
         </div>
 
         {/* Info panel */}
-        <div className="flex-1 md:overflow-y-auto px-6 py-8 md:px-10 md:py-12">
+        <div className="flex-1 md:overflow-y-auto scrollbar-minimal px-6 py-8 md:px-10 md:py-12">
           <p className="text-xs tracking-widest uppercase text-[var(--color-muted)] mb-3">
             {project.category}
           </p>
           <h1 className="heading-serif text-4xl font-medium leading-tight mb-8">
             {project.title}
           </h1>
-          <p className="text-sm text-[var(--color-muted)] leading-relaxed mb-10">
-            {project.longDescription}
-          </p>
+          <div className="space-y-4 mb-10">
+            {project.longDescription.split(/\n+/).filter(Boolean).map((para, i) => (
+              <p key={i} className="text-sm text-[var(--color-muted)] leading-relaxed">
+                {para}
+              </p>
+            ))}
+          </div>
 
           <div className="space-y-5 border-t border-stone-200 pt-8">
             {project.year > 0 && (

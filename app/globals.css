@@ -74,4 +74,26 @@ body {
     }
   }
 
+  .scrollbar-minimal {
+    scrollbar-width: thin;
+    scrollbar-color: #e7e5e4 transparent;
+  }
+
+  .scrollbar-minimal::-webkit-scrollbar {
+    width: 2px;
+  }
+
+  .scrollbar-minimal::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-minimal::-webkit-scrollbar-thumb {
+    background-color: #e7e5e4;
+    border-radius: 9999px;
+  }
+
+  .scrollbar-minimal::-webkit-scrollbar-thumb:hover {
+    background-color: #d6d3d1;
+  }
+
 }

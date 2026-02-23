@@ -18,7 +18,7 @@ export default function ProjectGallery({
   after,
   projectTitle,
 }: ProjectGalleryProps) {
-  const [tab, setTab] = useState<Tab>("before");
+  const [tab, setTab] = useState<Tab>(before.length > 0 ? "before" : "after");
   const [index, setIndex] = useState(0);
   const [lightbox, setLightbox] = useState<string | null>(null);
   const paused = useRef(false);

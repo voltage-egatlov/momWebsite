@@ -157,7 +157,7 @@ export default function SidebarShell({ children }: { children: React.ReactNode }
           </div>
         </aside>
 
-        <main className="flex-1 overflow-y-auto">{children}</main>
+        <main className="flex-1 overflow-y-auto scrollbar-minimal">{children}</main>
       </div>
     </>
   );

@@ -1,7 +1,7 @@
 ---
 title: North
 category: Architecture
-year: 2023
+year: 2025
 location: Lexington, Massachusetts
 description: A contemporary family home that frames views of the garden through a sequence of carefully composed apertures.
 longDescription: |

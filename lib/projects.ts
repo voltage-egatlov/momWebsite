@@ -17,6 +17,16 @@ export interface Project {
     };
 }
 
+function findMainImage(projectDir: string, slug: string): string {
+    const candidates = ["main.jpg", "main.JPG", "main.jpeg", "main.JPEG", "main.png", "main.PNG", "main.webp"];
+    for (const name of candidates) {
+        if (fs.existsSync(path.join(projectDir, name))) {
+            return `/projects/${slug}/${name}`;
+        }
+    }
+    return `/projects/${slug}/main.JPG`; // fallback (will 404 if missing)
+}
+
 function readImages(dir: string, urlBase: string): string[] {
     if (!fs.existsSync(dir)) return [];
     return fs
@@ -55,7 +65,7 @@ export function getAllProjects(): Project[] {
                 location: String(data.location ?? ""),
                 description: String(data.description ?? ""),
                 longDescription: String(data.longDescription ?? ""),
-                mainImage: `/projects/${slug}/main.JPG`,
+                mainImage: findMainImage(path.join(projectsDir, slug), slug),
                 gallery: {
                     before: readImages(
                         path.join(galleryBase, "before"),

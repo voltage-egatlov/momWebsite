@@ -8,10 +8,10 @@ import type { Project } from "@/lib/projects";
 export default function ProjectDetail({ project }: { project: Project }) {
   return (
     <SidebarShell>
-      {/* Top split: main image left, info right — fills viewport height */}
-      <div className="flex h-screen">
+      {/* Main image + info — stacked on mobile, side-by-side on desktop */}
+      <div className="flex flex-col md:flex-row md:h-screen">
         {/* Main image */}
-        <div className="relative w-3/5 shrink-0 bg-stone-100">
+        <div className="relative w-full aspect-[4/3] md:aspect-auto md:w-3/5 md:shrink-0 bg-stone-100">
           <Image
             src={project.mainImage}
             alt={project.title}
@@ -22,7 +22,7 @@ export default function ProjectDetail({ project }: { project: Project }) {
         </div>
 
         {/* Info panel */}
-        <div className="flex-1 overflow-y-auto px-10 py-12">
+        <div className="flex-1 md:overflow-y-auto px-6 py-8 md:px-10 md:py-12">
           <p className="text-xs tracking-widest uppercase text-[var(--color-muted)] mb-3">
             {project.category}
           </p>

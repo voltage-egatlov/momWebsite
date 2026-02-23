@@ -66,4 +66,12 @@ body {
     opacity: 1;
   }
 
+  /* On mobile, always show the overlay — no hover available */
+  @media (max-width: 767px) {
+    .card-overlay {
+      opacity: 1;
+      padding: 1rem;
+    }
+  }
+
 }

@@ -57,8 +57,14 @@ export function getAllProjects(): Project[] {
                 longDescription: data.longDescription ?? "",
                 mainImage: `/projects/${slug}/main.JPG`,
                 gallery: {
-                    before: readImages(path.join(galleryBase, "before"), `${urlBase}/before`),
-                    after: readImages(path.join(galleryBase, "after"), `${urlBase}/after`),
+                    before: readImages(
+                        path.join(galleryBase, "before"),
+                        `${urlBase}/before`,
+                    ),
+                    after: readImages(
+                        path.join(galleryBase, "after"),
+                        `${urlBase}/after`,
+                    ),
                 },
             } satisfies Project;
         })

@@ -1,30 +1,5 @@
-import { Suspense } from "react";
-import PortfolioLayout from "@/components/Sidebar";
-import { getAllProjects } from "@/lib/projects";
-
-export default function Home() {
-    const projects = getAllProjects();
-
-    return (
-        <>
-            {/* Mobile — work in progress */}
-            <div className="flex md:hidden min-h-screen items-center justify-center bg-(--color-background px-8">
-                <div className="text-center">
-                    <p className="heading-serif text-4xl font-medium mb-4">
-                        Upasna Chhabra
-                    </p>
-                    <p className="text-xs tracking-widest uppercase text-(--color-muted)">
-                        Mobile site coming soon
-                    </p>
-                </div>
-            </div>
-
-            {/* Desktop */}
-            <div className="hidden md:block">
-                <Suspense>
-                    <PortfolioLayout projects={projects} />
-                </Suspense>
-            </div>
-        </>
-    );
+// / redirects to /work via next.config.ts
+// This page is only rendered if the redirect is bypassed (e.g. static export edge cases)
+export default function RootPage() {
+  return null;
 }

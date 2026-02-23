@@ -1,27 +1,15 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
-import { SidebarShell } from "@/components/Sidebar";
+import SidebarShell from "@/components/Sidebar";
 import type { Project } from "@/lib/projects";
 
-const navLinks = ["work", "style", "about", "contact"] as const;
-type Section = (typeof navLinks)[number];
-
 export default function ProjectDetail({ project }: { project: Project }) {
-  const router = useRouter();
-
-  function handleNavigate(section: Section) {
-    // Navigate home and signal which section to open
-    router.push(`/?section=${section}`);
-  }
-
   return (
-    <SidebarShell activeSection="work" onNavigate={handleNavigate}>
-      {/* Top split: main image left, info right */}
+    <SidebarShell>
+      {/* Top split: main image left, info right — fills viewport height */}
       <div className="flex h-screen">
-        {/* Main image — takes up most of the left */}
+        {/* Main image */}
         <div className="relative w-3/5 shrink-0 bg-stone-100">
           <Image
             src={project.mainImage}
@@ -32,7 +20,7 @@ export default function ProjectDetail({ project }: { project: Project }) {
           />
         </div>
 
-        {/* Info panel — right side, scrollable */}
+        {/* Info panel */}
         <div className="flex-1 overflow-y-auto px-10 py-12">
           <p className="text-xs tracking-widest uppercase text-[var(--color-muted)] mb-3">
             {project.category}
@@ -79,7 +67,7 @@ export default function ProjectDetail({ project }: { project: Project }) {
           {project.gallery.map((src, i) => (
             <div
               key={src}
-              className="relative overflow-hidden bg-stone-100 mb-3 break-inside-avoid"
+              className="overflow-hidden bg-stone-100 mb-3 break-inside-avoid"
             >
               <Image
                 src={src}
